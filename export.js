@@ -7,7 +7,8 @@ const puppeteer = require('puppeteer');
 const zlib = require('zlib');
 const fetch = require('node-fetch');
 const crc = require('crc');
-const hummus = require('hummus');
+// const hummus = require('hummus');
+const muhammara = require('muhammara')
 const memoryStreams = require('memory-streams');
 
 const MAX_AREA = 15000 * 15000;
@@ -252,7 +253,7 @@ function mergePdfs(pdfFiles, xml)
 
 	try 
 	{
-		var pdfWriter = hummus.createWriter(new hummus.PDFStreamForResponse(outStream));
+		var pdfWriter = muhammara.createWriter(new muhammara.PDFStreamForResponse(outStream));
 
 		var infoDictionary = pdfWriter.getDocumentContext().getInfoDictionary();
 		infoDictionary.creator = 'diagrams.net';
@@ -265,7 +266,7 @@ function mergePdfs(pdfFiles, xml)
 
 		for (var i = 0; i < pdfFiles.length; i++)
 		{
-			appendPDFPageFromPDFWithAnnotations(pdfWriter, new hummus.PDFRStreamForBuffer(pdfFiles[i]))
+			appendPDFPageFromPDFWithAnnotations(pdfWriter, new muhammara.PDFRStreamForBuffer(pdfFiles[i]))
 		}
 
 		pdfWriter.end();
